@@ -1,23 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { View, Text } from 'react-native';
 
-export default function Jeux({name, price, cat}) {
-    console.log(name);
+const GameItem = ({ title, price, category }) => {
     return (
-        <View style={styles.container}>
-            <Text>{name}</Text>
-            <Text>{price}</Text>
-            <Text>{cat}</Text>
-            <StatusBar style="auto" />
+        <View style={styles.itemContainer}>
+            <Text style={styles.itemTitle}>{title}</Text>
+            <Text style={styles.itemPrice}>{price}</Text>
+            <Text style={styles.itemCategory}>{category}</Text>
         </View>
     );
-}
+};
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+export default GameItem;
+const styles = {
+    itemContainer: {
+        backgroundColor: '#ffffff',
+        padding: 10,
+        marginBottom: 10,
+        borderRadius: 8,
+        shadowColor: '#000000',
+        shadowOpacity: 0.1,
+        shadowOffset: { width: 0, height: 2 },
+        elevation: 20,
     },
-});
+    itemTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 5,
+    },
+
+    itemPrice: {
+        fontSize: 14,
+        color: '#888888',
+        marginBottom: 5,
+    },
+    itemCategory: {
+        fontSize: 14,
+        color: '#555555',
+    }
+};

@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet,View } from 'react-native';
-import ListeJeux from './components/ListeJeux';
-import Section from './components/Section';
+import { StyleSheet, Text, View } from 'react-native';
+import GameList from './components/ListeJeux';
+import GameListSection from './components/Section';
+import AddGameForm from './components/AjouterJeux';
+import { useState } from 'react';
 
 export default function App() {
-  const Game = [
-    {
+
+  const [games, setGames] = useState([{
       name: "Medal of Honor",
       price: "10€",
       catégorie: "FPS",
@@ -64,14 +66,19 @@ export default function App() {
       price: "18€",
       catégorie: "Action-Aventure",
       id: 549769
-    }
-  ];
+    }]);
+  const handleAddGame = (newGame) => {
+    setGames([...games, newGame]);
+    console.log(newGame);
+  };
 
   return (
     <View style={styles.container}>
-      <Section title="Jeux vidéo">
-        <ListeJeux games={Game}/>
-      </Section>
+      <GameListSection title="Jeux vidéo" style={styles.container}>
+        <GameList games={games} />
+      </GameListSection>
+      <Text>Ajouter un nouveau jeu :</Text>
+      <AddGameForm onAddGame={handleAddGame} />
       <StatusBar style="auto" />
     </View>
   );
@@ -83,5 +90,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 20,
   },
 });

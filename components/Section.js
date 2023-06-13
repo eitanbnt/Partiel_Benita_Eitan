@@ -1,30 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { View, Text } from 'react-native';
 
-export default function Section({ title, children }) {
+const GameListSection = ({ title, children }) => {
     return (
-        <View style={styles.container}>
-            <Text style= {styles.sectionTitle}>{title}</Text>
+        <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>{title}</Text>
             {children}
-            <StatusBar style="auto" />
         </View>
     );
-}
+};
+export default GameListSection;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: "grey",
-        borderRadius: 50,
-        borderWidth: 2,
-    
+const styles = {
+    sectionContainer: {
+        marginTop: 200,
+        alignItems: "center",
+        justifyContent: "center",
     },
     sectionTitle: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 10,
     },
-});
+};
+
